@@ -30,6 +30,9 @@ class NewsActivity : AppCompatActivity() {
         val savedNewsFragment = SavedNewsFragment()
         val searchNewsFragment = SearchNewsFragment()
 
+
+        setCurrentFragment(breakingNewsFragment)
+
         val newsRepository = NewsRepository(ArticleDatabase(this))
         val viewModelProviderFactory = NewsViewModelProviderFactory(newsRepository)
         viewModel = ViewModelProvider(this, viewModelProviderFactory).get(NewsViewModel::class.java)
@@ -46,7 +49,7 @@ class NewsActivity : AppCompatActivity() {
 
     private fun setCurrentFragment(fragment: Fragment) =
         supportFragmentManager.beginTransaction().apply {
-            replace(R.id.breakingNewsFragment, fragment)
+            replace(R.id.flFragment, fragment)
             commit()
         }
 
