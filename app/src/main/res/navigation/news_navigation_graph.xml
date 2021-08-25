@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/breakingNewsFragment"
-        android:name="com.androiddevs.mvvmnewsapp.ui.fragments.BreakingNewsFragment"
+        android:name="com.androiddevs.mvvmnewsapp.ui.fragments.breaking_news.BreakingNewsFragment"
         android:label="BreakingNewsFragment"
         tools:layout="@layout/fragment_breaking_news">
         <action
@@ -20,7 +20,7 @@
     </fragment>
     <fragment
         android:id="@+id/searchNewsFragment"
-        android:name="com.androiddevs.mvvmnewsapp.ui.fragments.SearchNewsFragment"
+        android:name="com.androiddevs.mvvmnewsapp.ui.fragments.search_news.SearchNewsFragment"
         android:label="SearchNewsFragment"
         tools:layout="@layout/fragment_search_news">
         <action
@@ -33,7 +33,7 @@
     </fragment>
     <fragment
         android:id="@+id/savedNewsFragment"
-        android:name="com.androiddevs.mvvmnewsapp.ui.fragments.SavedNewsFragment"
+        android:name="com.androiddevs.mvvmnewsapp.ui.fragments.saved_news.SavedNewsFragment"
         android:label="SavedNewsFragment"
         tools:layout="@layout/fragment_saved_news">
         <action
@@ -46,10 +46,13 @@
     </fragment>
     <fragment
         android:id="@+id/articleFragment"
-        android:name="com.androiddevs.mvvmnewsapp.ui.fragments.ArticleFragment"
+        android:name="com.androiddevs.mvvmnewsapp.ui.fragments.article.ArticleFragment"
         android:label="ArticleFragment"
         tools:layout="@layout/fragment_article">
         <argument android:name="article"
             app:argType="com.androiddevs.mvvmnewsapp.models.Article" />
+        <action
+            android:id="@+id/action_articleFragment_to_breakingNewsFragment"
+            app:destination="@id/breakingNewsFragment" />
     </fragment>
 </navigation>

@@ -1,30 +1,42 @@
-package com.androiddevs.mvvmnewsapp.ui.fragments
+package com.androiddevs.mvvmnewsapp.ui.fragments.breaking_news
 
 import android.os.Bundle
 import android.util.Log
+import android.view.LayoutInflater
 import android.view.View
-import androidx.core.widget.addTextChangedListener
+import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.androiddevs.mvvmnewsapp.R
 import com.androiddevs.mvvmnewsapp.adapters.NewsAdapter
+import com.androiddevs.mvvmnewsapp.databinding.FragmentBreakingNewsBinding
 import com.androiddevs.mvvmnewsapp.ui.NewsActivity
 import com.androiddevs.mvvmnewsapp.ui.NewsViewModel
-import com.androiddevs.mvvmnewsapp.utils.Constants.Companion.SEARCH_NEWS_TIME_DELAY
 import com.androiddevs.mvvmnewsapp.utils.Resource
-import kotlinx.android.synthetic.main.fragment_search_news.*
-import kotlinx.coroutines.Job
-import kotlinx.coroutines.MainScope
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
+import kotlinx.android.synthetic.main.fragment_breaking_news.*
 
-class SearchNewsFragment: Fragment(R.layout.fragment_search_news) {
+class BreakingNewsFragment: Fragment(R.layout.fragment_breaking_news) {
 
+    private lateinit var _binding: FragmentBreakingNewsBinding
     lateinit var viewModel: NewsViewModel
-    lateinit var newsAdapter: NewsAdapter
-    val TAG = "SearchNewsFragment"
+    lateinit var newsAdapter : NewsAdapter
+
+    val TAG = "BreakingNewsFragment"
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+    }
+
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        _binding = FragmentBreakingNewsBinding.inflate(inflater, container, false)
+        return _binding.root
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -37,26 +49,12 @@ class SearchNewsFragment: Fragment(R.layout.fragment_search_news) {
             }
 
             findNavController().navigate(
-                R.id.action_searchNewsFragment_to_articleFragment,
+                R.id.action_breakingNewsFragment_to_articleFragment,
                 bundle
             )
         }
 
-        //Search process
-        var job: Job?= null
-        etSearch.addTextChangedListener {editable->
-            job?.cancel()
-            job = MainScope().launch {
-                delay(SEARCH_NEWS_TIME_DELAY)
-                editable?.let{
-                    if(editable.toString().isNotEmpty()){
-                        viewModel.searchNews(editable.toString())
-                    }
-                }
-            }
-        }
-
-        viewModel.searchNews.observe(viewLifecycleOwner, Observer { response ->
+        viewModel.breakingNews.observe(viewLifecycleOwner, Observer { response ->
             when(response){
                 is Resource.Success -> {
                     hideProgressBar()
@@ -87,7 +85,7 @@ class SearchNewsFragment: Fragment(R.layout.fragment_search_news) {
 
     private fun setupRecyclerView(){
         newsAdapter = NewsAdapter()
-        rvSearchNews.apply{
+        recyclerViewBreakingNews.apply{
             adapter = newsAdapter
             layoutManager = LinearLayoutManager(activity)
         }

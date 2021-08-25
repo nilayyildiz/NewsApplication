@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">MVVMNewsApp</string>
+    <string name="title">TITLE</string>
+    <string name="source">SOURCE</string>
+    <string name="description">DESCRIPTION</string>
+    <string name="published_at">PUBLISHED AT</string>
 </resources>
