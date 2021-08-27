@@ -9,7 +9,10 @@ import androidx.navigation.ui.setupWithNavController
 import com.androiddevs.mvvmnewsapp.R
 import com.androiddevs.mvvmnewsapp.db.ArticleDatabase
 import com.androiddevs.mvvmnewsapp.repository.NewsRepository
+import com.androiddevs.mvvmnewsapp.utils.hide
+import com.androiddevs.mvvmnewsapp.utils.show
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import kotlinx.android.synthetic.main.activity_news.*
 
 class NewsActivity : AppCompatActivity() {
 
@@ -28,7 +31,16 @@ class NewsActivity : AppCompatActivity() {
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
         val navController: NavController = navHostFragment.navController
 
-        bottomNav.setupWithNavController(navHostFragment.navController)
+        bottomNav.setupWithNavController(navController)
+
+        navController.addOnDestinationChangedListener { _, destination, _ ->
+            when (destination.id) {
+                R.id.splashFragment -> bottomNavigationView.hide()
+
+                else -> bottomNav.show()
+            }
+
+        }
     }
 
 }

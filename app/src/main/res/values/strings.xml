@@ -5,5 +5,6 @@
     <string name="description">DESCRIPTION</string>
     <string name="published_at">PUBLISHED AT</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="digital_newspaper">Digital Newspaper</string>
+    <string name="news">News</string>
+    <string name="search">Search...</string>
 </resources>
