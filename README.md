@@ -12,6 +12,8 @@ It is an application where users can read news, search news and save the news th
 
 ![#03DAC5](https://via.placeholder.com/15/03DAC5/000000?text=+) ViewModel - Livedata
 
+![#03DAC5](https://via.placeholder.com/15/03DAC5/000000?text=+) Room
+
 ![#03DAC5](https://via.placeholder.com/15/03DAC5/000000?text=+) Navigation
 
 ![#03DAC5](https://via.placeholder.com/15/03DAC5/000000?text=+) ViewBinding
